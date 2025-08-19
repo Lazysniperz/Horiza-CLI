@@ -1,56 +1,83 @@
-# 🧠 Jarvis – Local Voice-Controlled AI Assistant
 
-**Jarvis** is a voice-activated, conversational AI assistant powered by a local LLM (Qwen via Ollama). It listens for a wake word, processes spoken commands using a local language model with LangChain, and responds out loud via TTS. It supports tool-calling for dynamic functions like checking the current time.
+---
+
+# ⚡ Horiza CLI – Local Voice-Controlled AI Assistant
+
+Horiza CLI is your **terminal-native, voice-activated AI assistant**, powered entirely by **local LLMs via Ollama**.
+Think of it as Jarvis, but **offline, hackable, and built for devs**. It listens for a wake word, understands your voice, calls tools when needed, and even talks back using TTS.
+
+No cloud. No lag. Just **your AI, on your machine.**
 
 ---
 
 ## 🚀 Features
 
-- 🗣 Voice-activated with wake word **"Jarvis"**
-- 🧠 Local language model (Qwen 3 via Ollama)
-- 🔧 Tool-calling with LangChain
-- 🔊 Text-to-speech responses via `pyttsx3`
-- 🌍 Example tool: Get the current time in a given city
-- 🔐 Optional support for OpenAI API integration
+* 🗣 **Voice-activated** — Wake it up with `Horiza`
+* 🧠 **Runs fully local** — Powered by Any AI By ollama but tested with **Horiza**
+* 🔧 **Tool-calling** — Extend with LangChain (e.g., get time, run commands, etc.)
+* 🔊 **Talks back** — Text-to-speech responses via `pyttsx3`
+* 🌍 **Example built-in tool** — Get the current time in any city
+* 🔐 **Optional hybrid mode** — Integrate with OpenAI API if you want
+* 🖥 **Terminal-first design** — Lightweight, hackable, and fast
 
 ---
 
+## ▶️ How It Works
 
-## ▶️ How It Works (`main.py`)
+### 🔹 Startup & Model Setup
 
-1. **Startup & local LLM Setup**
-   - Initializes a local Ollama model (`qwen3:1.7b`) via `ChatOllama`
-   - Registers tools (`get_time`) using LangChain
+* Loads a local Ollama model (`qwen3:1.7b`) via `ChatOllama`
+* Registers tools (like `get_time`) with LangChain
 
-2. **Wake Word Listening**
-   - Listens via microphone (e.g., `device_index=0`)
-   - If it hears the word **"Jarvis"**, it enters "conversation mode"
+### 🔹 Wake Word Detection
 
-3. **Voice Command Handling**
-   - Records the user’s spoken command
-   - Passes the command to the LLM, which may invoke tools
-   - Responds using `pyttsx3` text-to-speech (with optional custom voice)
+* Listens through your mic (`device_index=0` by default)
+* Activates conversation mode when it hears **“Horiza”**
 
-4. **Timeout**
-   - If the user is inactive for more than 30 seconds in conversation mode, it resets to wait for the wake word again.
+### 🔹 Voice Command Handling
+
+* Records & transcribes your spoken command
+* Passes it to the LLM → which may invoke a tool
+* Replies using `pyttsx3` with customizable voices
+
+### 🔹 Timeout
+
+* If inactive for **30s**, resets back to wake word listening
 
 ---
 
-## 🤖 How To Start Jarvis
+## 🤖 Getting Started
 
-1. **Install Dependencies**  
-   Make sure you have installed all required dependencies listed in `requirements.txt`:
-   ```bash
-   pip install -r requirements.txt
-   ```
+### 1. Install dependencies
 
-2. **Set Up the Local Model**  
-   Ensure you have the `qwen3:1.7b` model available in Ollama.
+```bash
+pip install -r requirements.txt
+```
 
-3. **Run Jarvis**  
-   Start the assistant by running:
-   ```bash
-   python main.py
-   ```
+### 2. Pull the model (Qwen3:1.7B)
+
+```bash
+ollama pull qwen:1.7b
+```
+
+### 3. Run Horiza CLI
+
+```bash
+python main.py
+```
+
+That’s it — say **“Horiza”** and start talking! 🦾
+
+## ⚡ Why Horiza CLI?
+
+Because assistants like this should be:
+✅ **Local-first** – Your data, your rules
+✅ **Hackable** – Add any tool you want
+✅ **Lightweight** – Works on everyday machines
+✅ **Fun** – Who doesn’t want their own Jarvis?
+
 ---
 
+✨ *Built by Sniper (Ahmed Shafiq) — Lazy but Precise™*
+
+---
